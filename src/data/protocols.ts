@@ -86,4 +86,92 @@ export function countVials(protocol: Protocol): number {
   return protocol.composition.reduce((total, item) => total + item.vials, 0);
 }
 
+export interface ProtocolDetail {
+  slug: string;
+  title: string;
+  imagePath: string;
+  note?: string;
+  composition: string[];
+  sessions: string;
+  frequency: string;
+  reconstitution: string[];
+  application: string[];
+  marking: string;
+}
+
+export const protocolsData: ProtocolDetail[] = [
+  {
+    slug: "queixo-duplo",
+    title: "Queixo Duplo",
+    imagePath: "/images/queixo-duplo.png",
+    composition: ["1 Smooth+ (Colagenases)", "1 Drain+ (Hialuronidase)", "2 Slim+ (Lipase)"],
+    sessions: "2-4",
+    frequency: "A cada 2 semanas",
+    reconstitution: ["Adicione 5 ml de solução salina a cada frasco.", "Adicione 1 ml de lidocaína simples a 2%."],
+    application: ["Administre 1 ml por ponto.", "Volume final: 6 ml."],
+    marking: "Distribuição dos pontos: A malha terá uma distância de aproximadamente 1-1,5 cm entre as linhas. Aplique no centro de cada quadrado."
+  },
+  {
+    slug: "perfilamento-facial",
+    title: "Perfilamento Facial",
+    imagePath: "/images/perfilamento-facial.png",
+    composition: ["1 Smooth+ (Colagenases)", "1 Drain+ (Hialuronidase)", "2 Slim+ (Lipase)"],
+    sessions: "2-4",
+    frequency: "A cada 2 semanas",
+    reconstitution: ["Adicione 3 ml de solução salina a cada frasco.", "Adicione 1 ml de lidocaína simples a 2%."],
+    application: ["Administre 0,5 ml por ponto.", "Volume final: 12 ml."],
+    marking: "Distribuição dos pontos: A malha terá uma distância de aproximadamente 1 a 1,5 cm entre as linhas. Aplique no centro de cada quadrado."
+  },
+  {
+    slug: "gordura-localizada",
+    title: "Gordura Localizada",
+    imagePath: "/images/gordura-localizada.png",
+    composition: ["1 Smooth+ (Colagenases)", "1 Drain+ (Hialuronidase)", "2 Slim+ (Lipase)"],
+    sessions: "2-8",
+    frequency: "A cada 2 semanas",
+    reconstitution: ["Adicione 3 ml de solução salina a cada frasco.", "Adicione 1 ml de lidocaína simples a 2%."],
+    application: ["Administre 1 ml por ponto."],
+    marking: "Distribuição dos pontos: A malha terá uma distância de aproximadamente 1-1,5 cm entre as linhas. Aplique no centro de cada quadrado."
+  },
+  {
+    slug: "celulite",
+    title: "Celulite",
+    imagePath: "/images/celulite.png",
+    note: "Tratamento para ambas as pernas",
+    composition: ["4 Frascos Smooth+ (Colagenases)", "2 Frascos Drain+ (Hialuronidase)", "4 Frascos Slim+ (Lipase)"],
+    sessions: "2-4",
+    frequency: "A cada 2 semanas",
+    reconstitution: ["Adicione 3 ml de solução salina a cada frasco.", "Adicione 1 ml de lidocaína simples a 2%."],
+    application: ["Administre 1 ml por ponto."],
+    marking: "Distribuição dos pontos: A malha terá uma distância de aproximadamente 1 a 1,5 cm entre as linhas. Aplique no centro de cada quadrado."
+  },
+  {
+    slug: "cicatrizes",
+    title: "Cicatrizes",
+    imagePath: "/images/cicatrizes.png",
+    composition: ["3 Frascos Smooth+ (Colagenases)", "1 Frasco Drain+ (Hialuronidase)"],
+    sessions: "4",
+    frequency: "A cada 2 a 3 semanas",
+    reconstitution: ["Adicione 1,5 ml de solução salina a cada frasco.", "Adicione 1 ml de lidocaína simples a 2%."],
+    application: ["Aplique na cicatriz.", "Para cicatrizes atróficas, aplique o coquetel simples 1-1-1 no tecido ao redor."],
+    marking: "Depende do formato e do tamanho da cicatriz."
+  },
+  {
+    slug: "fibrose-pos-cirurgica",
+    title: "Fibrose Pós-Cirúrgica",
+    imagePath: "/images/fibrose-pos-cirurgica.png",
+    composition: ["3 Frascos Smooth+ (Colagenases)", "1 Frasco Drain+ (Hialuronidase)", "1 Frasco Slim+ (Lipase)"],
+    sessions: "6",
+    frequency: "A cada 2 a 3 semanas",
+    reconstitution: ["Adicione 1,5 ml de solução salina a cada frasco.", "Adicione 1 ml de lidocaína simples a 2%."],
+    application: ["Aplicação intralesional em vários ângulos.", "Volume final: 7,5-25 ml*"],
+    marking: "Identificar e marcar nódulos fibróticos, ou aderências."
+  }
+];
+
+export function getProtocolBySlug(slug: string): ProtocolDetail | undefined {
+  return protocolsData.find((p) => p.slug === slug);
+}
+
 export { PRICE_PER_VIAL };
+

@@ -1,6 +1,6 @@
 "use client";
 
-import { AccreditationButton } from "@/components/accreditation/AccreditationButton";
+import Link from "next/link";
 import { ENZYMES } from "@/data/enzymes";
 import { countVials, PRICE_PER_VIAL, type Protocol } from "@/data/protocols";
 import { formatBRL } from "@/lib/format";
@@ -80,13 +80,24 @@ export function ProtocolPanel({ protocol }: { protocol: Protocol }) {
           </p>
         </div>
 
-        <AccreditationButton
-          protocolName={protocol.name}
-          className="rounded-[9px] bg-action px-7 py-[17px] text-[15.5px] font-semibold whitespace-nowrap text-action-fg transition-colors hover:bg-action-hover"
+        <Link
+          href={`/protocolos/${protocol.id}`}
+          className="group inline-flex items-center justify-center gap-2.5 rounded-[9px] bg-action px-7 py-[17px] text-[15.5px] font-semibold whitespace-nowrap text-action-fg transition-all hover:bg-action-hover shadow-md hover:shadow-lg active:scale-[0.99]"
         >
-          Solicitar este protocolo
-        </AccreditationButton>
+          <span>Ver Protocolo Completo</span>
+          <svg
+            aria-hidden="true"
+            className="h-4 w-4 transition-transform group-hover:translate-x-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2.5"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </Link>
       </div>
     </div>
   );
 }
+
